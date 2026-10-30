@@ -1,7 +1,7 @@
 # Algorithm-Execution-Profiler
-<br>
+### **Basic Pipeline**
+
 ```text
-### BASIC PIPELINE 
 Algorithm.jack -> (nand2tetris JackCompiler + Assembler) -> .hack
                                                               |
                                    N, data (--ram-init) ------|
