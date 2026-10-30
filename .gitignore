@@ -1,0 +1,16 @@
+# C++ Build Artifacts
+*.exe
+*.out
+*.o
+
+# Nand2Tetris Artifacts
+*.vm
+*.hack
+
+# Python Artifacts
+__pycache__/
+*.pyc
+
+# Profiler Output
+results.csv
+ram_init*.txt
