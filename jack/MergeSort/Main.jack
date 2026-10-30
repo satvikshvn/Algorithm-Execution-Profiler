@@ -1,0 +1,53 @@
+class Main {
+    function void main() {
+        var int N, baseAddr, tempAddr;
+        let N = Memory.peek(8000);
+        let baseAddr = 8001;
+        let tempAddr = baseAddr + N;
+        if (N > 1) {
+            do Main.sort(baseAddr, tempAddr, 0, N - 1);
+        }
+        return;
+    }
+
+    function void sort(int base, int temp, int left, int right) {
+        var int mid, i, j, k;
+        var int valI, valJ;
+        if (left < right) {
+            let mid = (left + right) / 2;
+            do Main.sort(base, temp, left, mid);
+            do Main.sort(base, temp, mid + 1, right);
+            let i = left;
+            let j = mid + 1;
+            let k = left;
+            while ((~(i > mid)) & (~(j > right))) {
+                let valI = Memory.peek(base + i);
+                let valJ = Memory.peek(base + j);
+                if (~(valI > valJ)) {
+                    do Memory.poke(temp + k, valI);
+                    let i = i + 1;
+                } else {
+                    do Memory.poke(temp + k, valJ);
+                    let j = j + 1;
+                }
+                let k = k + 1;
+            }
+            while (~(i > mid)) {
+                do Memory.poke(temp + k, Memory.peek(base + i));
+                let i = i + 1;
+                let k = k + 1;
+            }
+            while (~(j > right)) {
+                do Memory.poke(temp + k, Memory.peek(base + j));
+                let j = j + 1;
+                let k = k + 1;
+            }
+            let k = left;
+            while (~(k > right)) {
+                do Memory.poke(base + k, Memory.peek(temp + k));
+                let k = k + 1;
+            }
+        }
+        return;
+    }
+}

@@ -1,0 +1,16 @@
+class Main{
+    function void main(){
+        var int N, baseAddr;
+        var int i, prev, curr;
+        let N=Memory.peek(8000);
+        let baseAddr=8001;
+        let i=1;
+        while(i<N){
+            let prev=Memory.peek(baseAddr+i-1);
+            let curr=Memory.peek(baseAddr+i);
+            do Memory.poke(baseAddr+i,prev+curr);
+            let i=i+1;
+        }
+        return;
+    }
+}

@@ -1,0 +1,31 @@
+class Main{
+    //Assumptions-RAM[8000]=N, RAM[8001]=target, array starts from RAM[8002]
+    function void main(){
+        var int N, target, baseAddr;
+        var int low, high, mid, midVal, ans;
+        let N=Memory.peek(8000);
+        let target=Memory.peek(8001);
+        let baseAddr=8002;
+        let low=0;
+        let high=N-1;
+        let ans=-1;
+        while(~(low>high)){
+            let mid=(low+high)/2;
+            let midVal=Memory.peek(baseAddr+mid);
+            if(midVal=target){
+                let ans=mid;
+                let low=high+1;
+            }
+            else{
+                if(midVal>target){
+                    let high=mid-1;
+                }
+                else{
+                    let low=mid+1;
+                }
+            }
+        }
+        do Memory.poke(8000,ans);
+        return;
+    }
+}

@@ -1,0 +1,25 @@
+class Main{
+    function void main(){
+        var int N, baseAddr;
+        var int i, j, maxJ;
+        var int val1, val2;
+        let N=Memory.peek(8000);
+        let baseAddr=8001;
+        let i=0;
+        while(i<(N-1)){
+            let j=0;
+            let maxJ=N-i-1;
+            while(j<maxJ){
+                let val1=Memory.peek(baseAddr+j);
+                let val2=Memory.peek(baseAddr+j+1);
+                if(val1>val2){
+                    do Memory.poke(baseAddr+j,val2);
+                    do Memory.poke(baseAddr+j+1,val1);
+                }
+                let j=j+1;
+            }
+            let i=i+1;
+        }
+        return;
+    }
+}
