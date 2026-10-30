@@ -6,6 +6,7 @@
 # Nand2Tetris Artifacts
 *.vm
 *.hack
+!tests/*.hack
 
 # Python Artifacts
 __pycache__/
